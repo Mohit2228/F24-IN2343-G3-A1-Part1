@@ -5,7 +5,7 @@ class College
 class Students
 {
 	int studentId;
-	int StudentTerm;
+	String StudentTerm;
 	String StudentName;
 	int StudentAge;
 	string Program;
