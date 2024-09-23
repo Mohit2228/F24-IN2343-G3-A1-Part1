@@ -4,10 +4,10 @@ class College
 }
 class Students
 {
-	String studentId;
+	int studentId;
 	int StudentTerm;
 	String StudentName;
-	string StudentAge;
+	int StudentAge;
 	string Program;
 }
 class StudentManagement
@@ -21,7 +21,7 @@ class Classes
 string classId;
 int classTerm;
 string className;
-string classLocation;
+int classLocation;
 string classDateTime;
 string classProgram;
 }
