@@ -1,0 +1,27 @@
+class College
+ {
+ 	public static void main(String[] args)
+}
+class Students
+{
+	String studentId;
+	int StudentTerm;
+	String StudentName;
+	string StudentAge;
+	string Program;
+}
+class StudentManagement
+{
+	Students[] Students;
+	public static void GenerateStudentSchedules() 
+	
+}
+class Classes 
+{
+string classId;
+int classTerm;
+string className;
+string classLocation;
+string classDateTime;
+string classProgram;
+}
