@@ -1,0 +1,12 @@
+//GreetingBean.java
+package com.example;
+
+import javax.ejb.Stateless;
+
+@Stateless
+public class GreetingBean implements GreetingBeanRemote {
+    @Override
+    public String sayHello(String name) {
+        return "Hello, " + name + "!";
+    }
+}
