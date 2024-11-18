@@ -1,0 +1,26 @@
+//GreetingClient.java
+package com.example;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import java.util.Properties;
+
+public class GreetingClient {
+    public static void main(String[] args) {
+        try {
+            Properties props = new Properties();
+            props.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.openejb.client.RemoteInitialContextFactory");
+            props.put(Context.PROVIDER_URL, "http://localhost:8080/tomee/ejb");
+
+            Context context = new InitialContext(props);
+            GreetingBeanRemote greetingBean = (GreetingBeanRemote) context.lookup("GreetingBeanRemote");
+
+            String response = greetingBean.sayHello("World");
+            System.out.println(response);
+
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+    }
+}
