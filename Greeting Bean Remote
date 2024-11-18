@@ -1,0 +1,9 @@
+//GreetingBeanRemote.java
+package com.example;
+
+import javax.ejb.Remote;
+
+@Remote
+public interface GreetingBeanRemote {
+    String sayHello(String name);
+}
