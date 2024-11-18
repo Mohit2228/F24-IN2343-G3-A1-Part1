@@ -1,0 +1,48 @@
+import java.io.*;
+import java.net.*;
+
+public class ClientHandler implements Runnable {
+    private Socket socket;
+    private PrintWriter out;
+    private BufferedReader in;
+
+    public ClientHandler(Socket socket) {
+        this.socket = socket;
+    }
+
+    @Override
+    public void run() {
+        try {
+            // Setting up input and output streams
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+
+            // Broadcast messages received from client
+            String message;
+            while ((message = in.readLine()) != null) {
+                System.out.println("Received: " + message);
+                Server.broadcastMessage(message, this);
+            }
+        } catch (IOException e) {
+            System.err.println("Connection error: " + e.getMessage());
+        } finally {
+            closeConnection();
+        }
+    }
+
+    // Send message to this client
+    public void sendMessage(String message) {
+        out.println(message);
+    }
+
+    // Close connections
+    private void closeConnection() {
+        try {
+            if (in != null) in.close();
+            if (out != null) out.close();
+            if (socket != null) socket.close();
+        } catch (IOException e) {
+            System.err.println("Error closing connection: " + e.getMessage());
+        }
+    }
+}
