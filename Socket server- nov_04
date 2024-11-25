@@ -1,0 +1,37 @@
+// socketserver.java
+
+// create 2 objects which do method calls on each other
+
+public class ApplicationRunner{
+ public static void main(String[] args) {
+    
+    Cat c1 = new Cat("Ralph");
+    System.out.println(" The cat is named " + c1.catName);
+    c1.findAPlaceToHide("Chad's Hat");
+    System.out.println(c1.catName +" is now hiding in the Hat " + Hat.hatName);
+    }
+    
+}
+
+class Cat{
+    public String catName;
+
+    public Cat(String name){
+        this.catName = name;
+    }
+    
+
+ public Hat findAPlaceToHide(){
+      Hat aHat = new Hat(hatName);
+      aHat.hidingPlaceForACat = this;
+      return aHat;
+ }
+}
+class Hat{
+public static String hatName;
+public Cat hidingPlaceForACat;
+// data field : 
+    public Hat(String hName){this.hatName = hName;
+}
+
+}
